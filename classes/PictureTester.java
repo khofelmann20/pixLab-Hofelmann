@@ -19,6 +19,16 @@ public class PictureTester
     // uncomment this in repl.it to test your code!!
     // beach.write("imagesOutput/beach.jpg");
   }
+  public static void testKeepOnlyBlue(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.keepOnlyBlue();
+    beach.explore();
+  }
+  public static void testNegate(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.negate();
+    beach.explore();
+  }
   
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
@@ -53,7 +63,8 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
-  
+  /** Method to set the blue to 255 */
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -61,11 +72,11 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    //testNegate();
+    testNegate();
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
@@ -83,5 +94,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+
   }
 }
