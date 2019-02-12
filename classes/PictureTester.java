@@ -29,14 +29,34 @@ public class PictureTester
     beach.negate();
     beach.explore();
   }
-  
+
+  /*public static void testMirrorArms(){
+    Picture snowman = new Picture("images/snowman.jpg");
+    snowman.mirrorAmrs();
+    snowman.explore();
+  }*/
+  public static void testMirrorHorizontal(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.mirrorHorizontal();
+    beach.explore();
+  }
+  public static void testverticleRightToLeft(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.mirrorVerticalRightToLeft();
+    beach.explore();
+  }
+  public static void testMirrorHorizontalBotToTop(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.mirrorHorizontalBotToTop();
+    beach.explore();
+  }
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
-    caterpillar.explore();
-    caterpillar.mirrorVertical();
-    caterpillar.explore();
+    Picture beach = new Picture("beach.jpg");
+    beach.explore();
+    beach.mirrorVertical();
+    beach.explore();
   }
   
   /** Method to test mirrorTemple */
@@ -76,10 +96,11 @@ public class PictureTester
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    testNegate();
+    //testNegate();
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
+    //testMirrorHorizontal();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
@@ -94,6 +115,6 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-
+    //testverticleRightToLeft();
   }
 }
