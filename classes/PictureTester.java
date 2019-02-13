@@ -30,11 +30,16 @@ public class PictureTester
     beach.explore();
   }
 
-  /*public static void testMirrorArms(){
+  public static void testMirrorArms(){
     Picture snowman = new Picture("images/snowman.jpg");
-    snowman.mirrorAmrs();
+    snowman.mirrorArms();
     snowman.explore();
-  }*/
+  }
+    public static void testMirrorGull(){
+        Picture seagull = new Picture("images/seagull.jpg");
+        seagull.mirrorGull();
+        seagull.explore();
+    }
   public static void testMirrorHorizontal(){
     Picture beach = new Picture("images/beach.jpg");
     beach.mirrorHorizontal();
@@ -62,7 +67,7 @@ public class PictureTester
   /** Method to test mirrorTemple */
   public static void testMirrorTemple()
   {
-    Picture temple = new Picture("temple.jpg");
+    Picture temple = new Picture("images/temple.jpg");
     temple.explore();
     temple.mirrorTemple();
     temple.explore();
@@ -103,7 +108,7 @@ public class PictureTester
     //testMirrorHorizontal();
     //testMirrorTemple();
     //testMirrorArms();
-    //testMirrorGull();
+    testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
