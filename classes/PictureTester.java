@@ -6,6 +6,7 @@
  * 
  * @author Barbara Ericson 
  */
+//package com.gradescope.pixlab;
 public class PictureTester
 {
   /** Method to test zeroBlue */
@@ -28,8 +29,18 @@ public class PictureTester
     Picture beach = new Picture("images/beach.jpg");
     beach.negate();
     beach.explore();
-  }
-
+}
+    public static void testGrayscale(){
+        Picture beach = new Picture("images/beach.jpg");
+        beach.grayscale();
+        beach.explore();
+    }
+    public static void testMirrorDiagonal(){
+        //challenge method
+        Picture beach = new Picture("images/beach.jpg");
+        beach.mirrorDiagonal();
+        beach.explore();
+    }
   public static void testMirrorArms(){
     Picture snowman = new Picture("images/snowman.jpg");
     snowman.mirrorArms();
@@ -46,12 +57,12 @@ public class PictureTester
     beach.explore();
   }
   public static void testverticleRightToLeft(){
-    Picture beach = new Picture("images/beach.jpg");
+    Picture beach = new Picture("images/unicorn.jpg");
     beach.mirrorVerticalRightToLeft();
     beach.explore();
   }
   public static void testMirrorHorizontalBotToTop(){
-    Picture beach = new Picture("images/beach.jpg");
+    Picture beach = new Picture("images/unicorn.jpg");
     beach.mirrorHorizontalBotToTop();
     beach.explore();
   }
@@ -72,7 +83,13 @@ public class PictureTester
     temple.mirrorTemple();
     temple.explore();
   }
-  
+    public static void testMirrorUnicorn()
+    {
+        Picture temple = new Picture("images/unicorn.jpg");
+        temple.explore();
+        temple.mirrorUnicorn();
+
+    }
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -121,5 +138,7 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
     //testverticleRightToLeft();
+      //testMirrorUnicorn();
+      //testMirrorHorizontalBotToTop();
   }
 }

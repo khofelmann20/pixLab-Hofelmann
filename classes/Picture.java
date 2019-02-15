@@ -1,3 +1,4 @@
+//package com.gradescope.pixlab;
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -5,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
+
 
 /**
  * A class that represents a picture.  This class inherits from 
@@ -121,13 +123,14 @@ public class Picture extends SimplePicture {
     }
   }
 
-  public void grayScale() {
+  public void grayscale() {
     Pixel[][] pixels = this.getPixels2D();
     for (Pixel[] rowArray : pixels) {
       for (Pixel pixelObj : rowArray) {
-        pixelObj.setRed((pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed()) / 3);
-        pixelObj.setGreen((pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed()) / 3);
-        pixelObj.setBlue((pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed()) / 3);
+        int average = (pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed())/3;
+        pixelObj.setRed(average);
+        pixelObj.setGreen(average);
+        pixelObj.setBlue(average);
       }
     }
   }
@@ -170,10 +173,10 @@ public class Picture extends SimplePicture {
     Pixel topPixel = null;
     Pixel bottomPixel = null;
     int height = pixels.length;
-    for (int row = 0; row < pixels[0].length; row++) {
-      for (int col = 0; col < height / 2; col++) {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < pixels[0].length; col++) {
         topPixel = pixels[row][col];
-        bottomPixel = pixels[row][height - 1 - col];
+        bottomPixel = pixels[height - 1 - row][col];
         bottomPixel.setColor(topPixel.getColor());
       }
     }
@@ -184,10 +187,10 @@ public class Picture extends SimplePicture {
     Pixel topPixel = null;
     Pixel bottomPixel = null;
     int height = pixels.length;
-    for (int row = 0; row < pixels[0].length; row++) {
-      for (int col = 0; col < height / 2; col++) {
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < pixels[0].length; col++) {
         topPixel = pixels[row][col];
-        bottomPixel = pixels[row][height - 1 - col];
+        bottomPixel = pixels[height - 1 - row][col];
         topPixel.setColor(bottomPixel.getColor());
       }
     }
@@ -197,26 +200,28 @@ public class Picture extends SimplePicture {
    * Mirror just part of a picture of a temple
    */
   public void mirrorTemple() {
-    int mirrorPoint = 276;
+    int mirrorPoint = 276; //mirror point is where the picture will reflect
     Pixel leftPixel = null;
     Pixel rightPixel = null;
     int count = 0;
     Pixel[][] pixels = this.getPixels2D();
 
     // loop through the rows
-    for (int row = 27; row < 97; row++) {
+    for (int row = 27; row < 97; row++) { //the row part I want to mirror
       // loop from 13 to just before the mirror point
-      for (int col = 13; col < mirrorPoint; col++) {
+      for (int col = 13; col < mirrorPoint; col++) { //the col part I want to mirror
 
         leftPixel = pixels[row][col];
         rightPixel = pixels[row]
                 [mirrorPoint - col + mirrorPoint];
-        rightPixel.setColor(leftPixel.getColor());
+        rightPixel.setColor(leftPixel.getColor()); //setting right to the left color to mirror it
         count = count+1;
       }
     }
   }
-
+  public void mirrorDiagonal(){
+    //challenge method
+  }
   public void mirrorArms() {
     int mirrorPoint = 193;
     Pixel topPixel = null;
@@ -266,7 +271,23 @@ public class Picture extends SimplePicture {
       }
     }
 
+  }
+  public void mirrorUnicorn() {
+    int mirrorPoint = 169;
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    Pixel[][] pixels = this.getPixels2D();
 
+    // left arm
+    for (int row = 12; row < 89; row++) {
+      // loop from 13 to just before the mirror point
+      for (int col = 132; col < mirrorPoint; col++) {
+
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    }
 
   }
 
@@ -317,6 +338,9 @@ public class Picture extends SimplePicture {
     this.copy(flower2,500,0);
     this.mirrorVertical();
     this.write("collage.jpg");
+  }
+  public void fixUnderwater(){
+
   }
   
   
