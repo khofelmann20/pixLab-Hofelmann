@@ -322,12 +322,34 @@ public class Picture extends SimplePicture {
       }
     }   
   }
-
+  public void secondcopy(Picture fromPic,
+                   int startRow, int startCol,int endRow, int endCol)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = endRow, toRow = startRow;
+         fromRow < fromPixels.length &&
+                 toRow < toPixels.length;
+         fromRow++, toRow++)
+    {
+      for (int fromCol = endCol, toCol = startCol;
+           fromCol < fromPixels[0].length &&
+                   toCol < toPixels[0].length;
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }
+  }
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
+    Picture flower1 = new Picture("images/flower1.jpg");
+    Picture flower2 = new Picture("images/flower2.jpg");
     this.copy(flower1,0,0);
     this.copy(flower2,100,0);
     this.copy(flower1,200,0);
@@ -336,6 +358,23 @@ public class Picture extends SimplePicture {
     this.copy(flowerNoBlue,300,0);
     this.copy(flower1,400,0);
     this.copy(flower2,500,0);
+    this.mirrorVertical();
+    this.write("collage.jpg");
+  }
+  public void myCollage(){
+    Picture beach = new Picture("images/beach.jpg");
+    Picture unicorn = new Picture("images/unicorn.jpg");
+    Picture robot = new Picture("images/robot.jpg");
+    this.copy(robot, 0,0);
+    this.copy(beach,0,0);
+    this.copy(unicorn,100,0);
+    this.copy(beach,200,0);
+    Picture flowerNoBlue = new Picture(unicorn);
+    flowerNoBlue.zeroBlue();
+    this.copy(flowerNoBlue,300,0);
+    this.copy(beach,200,0); //i changed this 400?
+    this.copy(unicorn,500,0);
+    this.copy(robot,300,0);
     this.mirrorVertical();
     this.write("collage.jpg");
   }
