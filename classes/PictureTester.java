@@ -113,10 +113,16 @@ public class PictureTester
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("swan.jpg");
+    Picture swan = new Picture("images/swan.jpg");
     swan.edgeDetection(10);
     swan.explore();
   }
+    public static void testEdgeDetection2()
+    {
+        Picture swan = new Picture("images/swan.jpg");
+        swan.edgeDetection2(10);
+        swan.explore();
+    }
   /** Method to set the blue to 255 */
 
   /** Main method for testing.  Every class can have a main
